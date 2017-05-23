@@ -1,0 +1,62 @@
+<div class="content-evento-background" style="background: transparent url('<%= image_path('cita/solicitar-cita.jpg') %>')  50% 15% no-repeat; background-size: cover;">
+  <div class="container">
+    <div class="content-title">
+         <h2 class="title-section">Eventos</h2>
+    </div>
+  </div>  
+</div>
+<section id="eventos" class="blog gray-section">  
+    <section id="categoria" class="white-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h2>Categorias: </h2>
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <ul class="nav navbar-nav">
+                            <li style="margin: 10px 10px;">
+                                <%= link_to "General", eventos_path, class: "btn btn-dark-blue btn-lg", style: "padding: 10px;" %>    
+                            </li>
+                        <% @categorias.each do |categoria| %>
+                            <li style="margin: 10px 10px;">
+                                <% if categoria["slug"] == params[:slug] %>
+                                <%= link_to categoria["descripcion"], eventos_categoria_path(categoria["slug"]), class: "btn btn-blue btn-lg", style: "padding: 10px;" %>
+                                <% else %>
+                                <%= link_to categoria["descripcion"], eventos_categoria_path(categoria["slug"]), class: "btn btn-dark-blue btn-lg", style: "padding: 10px;" %>
+                                <% end %>
+                            </li>
+                        <% end %> 
+                        </ul>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </section>  
+    <div class="container">
+        <div class="row">
+        <% @eventos.each do |evento| %>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="evento ibox">
+                    <div class="ibox-content">
+                        <%= link_to eventos_ver_path(evento["slug"]) do %>
+                            <h2 class= "btn-link"><%= evento['descripcion']%></h2>
+                            <img class="img-responsive" src="<%= evento["foto_url"]%>">
+                        <% end %>
+                        <div class="small m-b-xs">
+                            <span class="text-muted"><i class="fa fa-clock-o"></i> <%= evento['created_at'].to_date.strftime("%d/%m/%Y") %></span>
+                        </div>
+                        <p><%= evento["descripcion"] %></p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>Categoria:</h3>
+                                <label class="btn-dark-blue btn-xs" style="padding: 0px 20px;" type="button"><%= evento["tipo_evento"]['descripcion'] %></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% end %> 
+        </div>
+    </div>
+</section>

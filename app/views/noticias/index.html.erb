@@ -1,0 +1,50 @@
+<section id="noticias" class="blog gray-section">    
+    <section id="categoria" class="white-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h2>Categorias: </h2>
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <ul class="nav navbar-nav">
+                            <li style="margin: 10px 10px;">
+                                <%= link_to "General", noticias_path, class: "btn btn-blue btn-lg", style: "padding: 10px;" %>    
+                            </li>
+                        <% @categorias.each do |categoria| %>
+                            <li style="margin: 10px 10px;">
+                                <%= link_to categoria["descripcion"], noticias_categoria_path(categoria["slug"]), class: "btn btn-dark-blue btn-lg", style: "padding: 10px;" %>
+                            </li>
+                        <% end %> 
+                        </ul>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <% @noticias.each do |noticia| %>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="noticia ibox">
+                    <div class="ibox-content">
+                    <h2><%= link_to noticia['titulo'], noticias_ver_path( noticia["slug"] ), class: "btn-link" %></h2> 
+                        <div class="small m-b-xs">
+                            <span class="text-muted"><i class="fa fa-clock-o"></i> <%= noticia['created_at'].to_date.strftime("%d/%m/%Y") %></span>
+                        </div>
+                        <p><%= noticia["descripcion"] %></p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Categoria:</h5>
+                                <a class="btn btn-dark-blue btn-xs" style="padding: 0px 20px;" type="button" href="<%= noticias_categoria_path(noticia["tipo_noticia"]["slug"])%>"><%= noticia["tipo_noticia"]['descripcion'] %></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+           
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,74 @@
+
+    
+
+        <div class="content-filtro">
+        <h3 class="title-filtro text-blue-dark">Especialidad</h3>
+        <ul class="nav">
+        <% @especialidades.each do |especialidad| %>
+            <li>
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" name="especialidad" value="<%= especialidad["id"] %>">
+                    <label><%= especialidad["descripcion"] %></label>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+    
+    <div class="content-filtro">
+        <h3 class="title-filtro text-blue-dark">Pacientes a Atender</h3>
+        <ul class="nav">
+            <% @edades.each do |edad| %>
+            <li>
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" name="edades" value="<%= edad["id"] %>">
+                    <label> <%= edad["descripcion"] %></label>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+    <div class="content-filtro">
+        <h3 class="title-filtro text-blue-dark">Horario de Atencion</h3>
+        <ul class="nav">
+            <li>
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" name="tipo_turno" value="1">
+                    <label> Mañana</label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" name="tipo_turno" value="2">
+                    <label> Tarde</label>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="content-filtro">
+        <h3 class="title-filtro text-blue-dark">Sexo del Paciente</h3>
+        <ul class="nav">
+            <% @sexos.each do |sexo| %>
+            <li>
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" name="Turno" value="<%= sexo["id"] %>">
+                    <label> <%= sexo["descripcion"] %></label>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="content-filtro">
+        <h3 class="title-filtro text-blue-dark">Patologias</h3>
+        <ul class="nav">
+            <% @patologias.each do |patologia| %>
+            <li>
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" name="patologia" value="<% patologia["id"] %>">
+                    <label> <%= patologia["descripcion"] %></label>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+    </div>

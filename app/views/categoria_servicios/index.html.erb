@@ -1,0 +1,45 @@
+<section id="categoria-servicios" class="white-section unique-section">
+  <div class="container">
+    <h2 class="title-section" style="margin: 80px 0px 0px;">Catalogo de Servicios</h2>
+    <div class="row">
+    <% @categorias.each do |categoria_servicio| %>
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" style="margin: 30px 0px;">
+        <div class="content-categoria-servicio">
+          <div class="image-content-categoria-servicio">
+            <img class="img-categoria-servicio" height="120" src="<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>">
+          </div>
+          <div class="title-categoria-servicio">
+            <h2 class="text-white"><strong><%= categoria_servicio["descripcion"] %></strong></h2>
+          </div>
+          
+          <div class="content-list-especialidades servicios" style="border-bottom: 0px;">
+            <ul class="list-especialidades">
+            <% categoria_servicio["tipo_servicios"].take(5).each do |tipo| %>
+                <li>
+                  <%= link_to tipo["descripcion"], servicios_ver_path(slug: tipo["slug"]) %>
+                  <%#= link_to tipo["descripcion"], categoria_servicios_ver_path( categoria_servicio["slug"], tipo["slug"], tipo["servicios"].first["descripcion"]) %>
+                </li>
+            <% end %>
+            </ul>
+          </div>
+          <div class="content-list-especialidades adicionales" style="border-top: 0px;">
+            <ul class="list-especialidades">
+              <li class="ver-mas row">
+                <%= link_to categoria_servicios_mas_categorias_path(categoria_servicio["slug"]), class: "link-ver col-sm-6", style: "margin: 0px;" do %>
+                  <i class="fa fa-plus"></i> Categorias
+                <% end %>
+                <%= link_to categoria_servicios_mas_servicios_path(categoria_servicio["slug"]), class: "link-ver col-sm-6", style: "margin: 0px;" do %>
+                  <i class="fa fa-plus"></i> Servicios
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <div class="content-btn-categoria-servicio text-center" style="margin-top: 10px;">
+            
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</section>

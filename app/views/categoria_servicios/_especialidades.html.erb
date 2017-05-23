@@ -1,0 +1,18 @@
+        <%= ajax_will_paginate @especialidades %>
+          <div class="row">
+            <% @especialidades.each do |especialidad| %>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 20px;">
+              <div class="content-categoria-servicio">
+                <div class="image-content-categoria-servicio">
+                  <img class="img-categoria-servicio" width="inherit" height="120" src="<%= image_path('carousel/alice-fondo-consulta-medica.jpg') %>">
+                </div>
+                <div class="title-categoria-servicio">
+                  <h2>
+                  <%= link_to especialidad["descripcion"], servicios_ver_path(slug: especialidad["slug"]), style: 'color:#FFFFFF;' %></h2>
+
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        <%= ajax_will_paginate @especialidades %>
